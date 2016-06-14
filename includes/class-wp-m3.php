@@ -95,6 +95,10 @@ class Wp_M3 {
 	 * @access   private
 	 */
 	private function load_dependencies() {
+		/**
+		 * Composer
+		 */
+		require __DIR__ . '/../vendor/autoload.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
@@ -151,9 +155,10 @@ class Wp_M3 {
 
 		$plugin_admin = new Wp_M3_Admin( $this->get_plugin_name(), $this->get_version() );
 
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'display_admin_page' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' );
 	}
 
 	/**
@@ -169,7 +174,9 @@ class Wp_M3 {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
+		$this->loader->add_action( 'wp_ajax_nopriv_wp_m3', $plugin_public, 'decode_jwt' );
+		
+		add_shortcode('m3', array($plugin_public, 'm3_shortcode'));
 	}
 
 	/**

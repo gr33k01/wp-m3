@@ -1,4 +1,24 @@
-/**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
- */
+.wp-m3-settings .dashicons {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.wp-m3-settings input[type="text"],
+.wp-m3-settings select {
+	min-width: 300px;
+}
+
+.wp-m3-settings em {
+	display: block;
+	margin-top:.5em;
+}
+
+.wp-m3-settings pre {
+	border: 1px solid #ddd;
+	background: #eee;
+	padding: 5px 10px;
+	display: inline-block;
+	border-radius: 3px;
+	color: #e74c3c;
+	margin-left: 1em;
+}

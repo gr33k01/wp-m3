@@ -2,3 +2,24 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+.m3-public {
+	position: relative;
+	overflow: hidden;
+	height: 851px;
+	max-width: 800px;
+	margin: auto;
+	border: 30px solid #eee;
+	margin-bottom: 5em;
+}
+.m3-public iframe {
+	position: absolute;
+	top: -95px;
+	display: block;
+	max-width: 800px;
+	width: 100%;
+	height: 946px;
+	left: 0;	
+}
+
+ 

@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       WP-M3
  * Plugin URI:        https://github.com/gr33k01/wp-m3
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Wordpress plugin for Mindoula M3. Exposes a shortcode and stores data.
  * Version:           1.0.0
  * Author:            Nate Hobi
  * Author URI:        natehobi.com
@@ -72,4 +72,5 @@ function run_wp_m3() {
 	$plugin->run();
 
 }
-run_wp_m3();
+run_wp_m3(); 
+

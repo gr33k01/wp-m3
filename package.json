@@ -1,0 +1,27 @@
+{
+  "name": "wp-m3",
+  "version": "1.0.0",
+  "description": "=== Plugin Name === Contributors: (this should be a list of wordpress.org userid's) Donate link: natehobi.com Tags: comments, spam Requires at least: 3.0.1 Tested up to: 3.4 Stable tag: 4.3 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp-sass": "^2.3.1",
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gr33k01/wp-m3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gr33k01/wp-m3/issues"
+  },
+  "homepage": "https://github.com/gr33k01/wp-m3#readme"
+}
