@@ -159,6 +159,8 @@ class Wp_M3 {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' );
+		$this->loader->add_action( 'wp_ajax_download_data', $plugin_admin, 'download_data' );
+		$this->loader->add_action( 'wp_ajax_nopriv_download_data', $plugin_admin, 'download_data' );
 	}
 
 	/**
@@ -175,7 +177,8 @@ class Wp_M3 {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_action( 'wp_ajax_nopriv_wp_m3', $plugin_public, 'decode_jwt' );
-		
+		$this->loader->add_action( 'wp_ajax_wp_m3', $plugin_public, 'decode_jwt' );
+
 		add_shortcode('m3', array($plugin_public, 'm3_shortcode'));
 	}
 

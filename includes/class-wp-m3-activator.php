@@ -40,10 +40,10 @@ class Wp_M3_Activator {
 		  id bigint(20) NOT NULL AUTO_INCREMENT,
 		  user_id bigint(20) unsigned NOT NULL default 0,
 		  timestamp datetime NOT NULL,		  
-		  total_score mediumint NOT NULL,
+		  total_score mediumint,
 		  details text, 
-		  thoughts_of_suicide bit NOT NULL default 0,
-		  drug_use bit NOT NULL default 0,
+		  thoughts_of_suicide tinyint default 0,
+		  drug_use tinyint default 0,
 		  PRIMARY KEY id (id),
 		  KEY user_id (user_id)
 		) $charset_collate;";

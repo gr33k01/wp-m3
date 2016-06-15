@@ -168,18 +168,16 @@ class Wp_M3_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function decode_jwt() {		
+	public function decode_jwt() {				
 		if ($_SERVER['REQUEST_METHOD'] != 'POST') {			
     		http_response_code(403);     		
 			echo 'There was a problem with submission';
 			wp_die();			
-		}
-
-		header('Content-Type: application/json');
+		}		
 		$api_key = get_option('wp_m3_api_key');
-		$jwt = $_POST['m3_jwt'];
-		$data = JWT::decode($jwt, $key, ['HS256']);
-		echo json_encode($data);
+		$jwt = $_POST['m3_jwt'];		
+		$data = JWT::decode($jwt, $api_key, ['HS256']);
+		$this->save_results($data);
 		wp_die();
 	}
 
@@ -190,5 +188,24 @@ class Wp_M3_Public {
 	 */
 	public function encode_jwt() {
 
+	}
+
+	/**
+	 * Saves results to db
+	 *
+	 * @since    1.0.0
+	 */
+	private function save_results($data) {
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'wpm3_results';
+		$values = [
+			'user_id' => wp_get_current_user()->ID,
+			'timestamp' => date('Y-m-d G:i:s'),
+			'total_score' => $data->total,
+			'details' => serialize($data->details),
+			'thoughts_of_suicide' => $data->thoughts_of_suicide ? 1 : 0,
+			'drug_use' => $data->drug_use ? 1 : 0
+		];		
+		$wpdb->insert( $table_name, $values );
 	}
 }
